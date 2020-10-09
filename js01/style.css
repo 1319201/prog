@@ -1,0 +1,57 @@
+body {
+    background-color: #ffd700;
+    margin: 0;
+}
+header img{
+    width: 100%;
+}
+.list{
+    text-align: center;
+  }
+  .list li{
+    display: inline-block;
+  }
+  nav a{
+      color: white;
+    background: black;
+    display: block;
+    line-height: 1.0;
+    padding: 6px 0;
+    border-left: 1px solid #fff;
+    text-align: center;
+    text-decoration: none;
+  }
+  nav a:hover{
+      background: hotpink;
+  }
+
+.mmm{
+    background-color: rgba(255,255,255, 0.5);
+    width: 70%;
+    height: 100%;
+    margin: 60px;
+    margin-left : auto;
+    margin-right : auto;
+    text-align: center;
+}
+.mmm h1{
+    
+    margin: 20px;
+}
+.mmm p{
+    font-weight: bold;
+
+}
+.favo{
+    background-color: rgba(255,255,255, 0.5);
+    width: 70%;
+    height: 100%;
+    margin: 60px;
+    margin-left : auto;
+    margin-right : auto;
+    text-align: center;
+}
+.favo p{
+    font-weight: bold;
+}
+
