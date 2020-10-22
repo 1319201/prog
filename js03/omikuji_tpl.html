@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>おみくじ</title>
+</head>
+<body>
+
+<header>
+    <h1>おみくじ</h1>
+</header>
+
+<main>
+    <ul>
+        <li id="pull">おみくじを引く</li>
+    </ul>
+    <p id="echo"></p>
+    <p id="under">今日の貴方の運勢は如何に...？</p>
+
+</main>
+
+<footer>フッター</footer>
+<script>
+const pull = document.querySelector("#pull");
+const echo = document.querySelector("#echo");
+const under = document.querySelector("#under");
+
+pull.onclick = function(){
+    const num = Math.ceil(Math.random()*5);
+    under.style.fontSize="20px";
+    if(num==1){
+        echo.innerHTML='<img src="daikichi.jpg">';
+        under.innerHTML=("今日の貴方は力が溢れているので誰が来ても倒せる気がします。天下統一を目指しましょう。");
+    }
+    if(num==2){
+        echo.innerHTML='<img src="tyuukichi.jpg">';
+        under.innerHTML=("なんだか今日はとても体が軽い気がします。飛んでみましょう。");
+    }
+    if(num==3){
+        echo.innerHTML='<img src="syoukichi.jpg">';
+        under.innerHTML=("別に悪いことも無ければ特に良いことも無いです。");
+    }
+    if(num==4){
+        echo.innerHTML='<img src="kichi.jpg">'
+        under.innerHTML=("すれ違う犬に必ず吠えられる気がします。外出は控えましょう。");
+    }
+    if(num==5){
+        echo.innerHTML='<img src="kyou.jpg">';
+        under.innerHTML=("今日は連絡しても誰からも返事が返ってこない気がします。諦めましょう。");
+    }
+}
+
+
+
+
+</script>
+</body>
+</html>
