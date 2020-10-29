@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h2>おばけとじゃんけん</h2>
+  <div></div>
+  <img src="obake1.jpg" width="250" height="300">
+</header>
+
+<main>
+  <ul id="janken">
+    <h4>あなたの出す手を選んでね</h4>
+    <input type="image" src="gu.png" width=200 height=200 id="gu_btn">
+    <input type="image" src="tyoki.png" width=200 height=200 id="cho_btn">
+    <input type="image" src="pa.png" width=200 height=200 id="par_btn">
+  </ul>
+  <div>おばけの出した手は？<span id="pc_hands"></span></div>
+  <div id="judgment"></div>
+  <div id="reload">
+  <input type="image" src="re.png" width=200 height=100 onclick="window.location.reload();" >
+  </div>
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+$("#gu_btn").on("click",function(){
+  const num = Math.ceil(Math.random()*3);
+    if(num==1){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぐー」");
+        $("#judgment").html("あいこ！もう一度出してみましょう！");
+        $('img[src="obake1.jpg"]').attr('src','aikoG.jpg'); //どうしても画像の差し替えがしたくてネットから探してコピペしました。申し訳ございません。
+    }
+    if(num==2){
+        $("#pc_hands").html("「ちょき」"); 
+        $("#janken").empty();
+        $("#judgment").html("あなたの勝ち！おばけにお菓子を貰いました♪");
+        $('img[src="obake1.jpg"]').attr('src','makeT.jpg');
+    }
+    if(num==3){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぱー」");
+        $("#judgment").html("あなたのまけ！おばけにお菓子を奪われてしまいました(T_T)"); 
+        $('img[src="obake1.jpg"]').attr('src','kachiP.jpg');
+    }  
+
+
+}); 
+$("#cho_btn").on("click",function(){
+  const num = Math.ceil(Math.random()*3);
+    if(num==1){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぐー」");
+        $("#judgment").html("あなたのまけ！おばけにお菓子を奪われてしまいました(T_T)"); 
+        $('img[src="obake1.jpg"]').attr('src','kachiG.jpg');
+    }
+    if(num==2){
+        $("#janken").empty();
+        $("#pc_hands").html("「ちょき」"); 
+        $("#judgment").html("あいこ！もう一度出してみましょう！");
+        $('img[src="obake1.jpg"]').attr('src','aikoT.jpg');
+
+    }
+    if(num==3){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぱー」");
+        $("#judgment").html("あなたの勝ち！おばけにお菓子を貰いました♪");
+        $('img[src="obake1.jpg"]').attr('src','makeP.jpg'); 
+    }  
+
+
+}); 
+$("#par_btn").on("click",function(){
+  const num = Math.ceil(Math.random()*3);
+    if(num==1){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぐー」");
+        $("#judgment").html("あなたの勝ち！おばけにお菓子を貰いました♪"); 
+        $('img[src="obake1.jpg"]').attr('src','makeG.jpg');
+    }
+    if(num==2){
+        $("#janken").empty();
+        $("#pc_hands").html("「ちょき」"); 
+        $("#judgment").html("あなたのまけ！おばけにお菓子を奪われてしまいました(T_T)");
+        $('img[src="obake1.jpg"]').attr('src','kachiT.jpg');
+    }
+    if(num==3){
+        $("#janken").empty();
+        $("#pc_hands").html("「ぱー」");
+        $("#judgment").html("あいこ！もう一度出してみましょう！"); 
+        $('img[src="obake1.jpg"]').attr('src','aikoP.jpg');
+    }  
+
+
+});
+
+    
+    
+    
+
+</script>
+</body>
+</html>
