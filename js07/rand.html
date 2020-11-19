@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function rand(n){
+        const r = Math.ceil(Math.random()*n);
+        return r;
+    }
+    const a=(rand(5));
+    const b=(rand(5));
+    const c=(rand(5));
+    const t= a + b + c;
+    
+    console.log(a);
+    console.log(b);
+    console.log(c);
+
+    if(t>=13){
+        alert("大吉");
+    }else if(t<=12 && t>=10){
+        alert("中吉");
+    }else if(t<=9 && t>=7){
+        alert("小吉");
+    }else if(t<=6 && t>=4){
+        alert("吉");
+    }else if(t<=3 && t>=0){
+        alert("凶");
+    }
+</script>
+</body>
+</html>
