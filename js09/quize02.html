@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>なぞなぞ</title>
+</head>
+<body>
+
+<header>
+    <h1>なぞなぞ</h1>
+</header>
+
+<main>
+  <p id="quest">ここに問題が出題されます</p>
+  <p>
+    <input type="radio" name="toi" value="1"><span id="toi1">選択肢１</span>
+    <input type="radio" name="toi" value="2"><span id="toi2">選択肢２</span>
+    <input type="radio" name="toi" value="3"><span id="toi3">選択肢３</span>
+  </p>
+</main>
+
+<footer id="judge">フッター</footer>
+<script>
+//ここから記述領域［START］
+
+  //以下に配列を記述してください。
+  //問題文[配列]
+  const qs = [
+    "９または４で作る形は何？",
+    "大金持ちの御曹司（おんぞうし）が知らない色は？",
+    "体の中で、割ると正直になっちゃうものって？",
+    "ネコは0点、イヌは1点、ウマは4点、じゃあクマはなん点？",
+    "10秒まってからたべる野菜は何？",
+    "寝るとき、いつも部屋のすみで寝る人は誰？"
+    ];
+    
+  //回答選択肢[多重配列]
+  const toi =[
+  ["四角形","三角形","丸"],
+  ["金","黒","白"],
+  ["頭","尻","腹"],
+  ["３点","４点","６点"],
+  ["にんじん","カブ","トマト"],
+  ["祖父","親","子ども"]
+  ];
+
+    
+  //答え[配列]
+  const ans = [1, 2, 3, 2, 3, 2];
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+  let i = 0;
+  let o = 0;
+  $("h1").text("なぞなぞ 第"+(i+1)+"問");
+  $("#quest").text( qs[i]);
+  $("#toi1").text( toi[i][0] );
+  $("#toi2").text( toi[i][1] );
+  $("#toi3").text( toi[i][2] );
+
+
+  //2.ラジオボタンをクリックしたらイベント発生！(クリックイベント)
+  $("[name=toi]").on("click",function(){
+    const v =$(this).val();
+    if(ans[i] == v){
+        $("#judge").text("正解！");
+        o++;
+    }else{
+        $("#judge").text("不正解！");
+    }
+    const r = 100/6*o;
+    const rr = Math.round(r);
+    i++;
+    if(i<6){
+    $("h1").text("なぞなぞ 第"+(i+1)+"問");
+    $("#quest").text( qs[i]);
+    $("#toi1").text( toi[i][0] );
+    $("#toi2").text( toi[i][1] );
+    $("#toi3").text( toi[i][2] );
+    }else{
+      $("h1").text( "終了！" );
+      $("#quest").text( "お疲れさまでした！" );
+      $("[name=toi]").remove();
+      $("#toi1").text("あなたの正解数は"+o+"問でした。");
+      $("#judge").text("正解率は"+rr+"%です");
+      $("#toi2").remove();
+      $("#toi3").remove();
+    }
+});
+
+
+
+
+
+
+
+//ここまでが記述領域［END］
+</script>
+</body>
+</html>
