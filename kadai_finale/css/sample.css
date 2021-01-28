@@ -1,0 +1,62 @@
+h1{
+    font-size: 50px;
+    font-family: fantasy;
+    text-align: center;
+}
+
+body{
+    background-color: cornsilk;
+}
+
+#sl{
+    width: 250px;
+    margin:0 auto;
+}
+
+#ys{
+    width: 330px;
+    margin:0 auto;
+}
+
+#cnvs{
+    width: 490px;
+    margin:0 auto;
+}
+
+#pen{
+    padding:4px;
+    border:1px solid rgb(165, 165, 165);
+    background:rgb(219, 219, 219);
+}
+
+#kesi{
+    padding:4px;
+    border:1px solid rgb(165, 165, 165);
+    background:rgb(219, 219, 219);
+}
+
+#clear_btn{
+    padding:4px;
+    border:1px solid rgb(165, 165, 165);
+    background:rgb(223, 223, 223);
+}
+
+#sg{
+    width: 490px;
+    margin:0 auto;
+    padding:4px;
+    border:1px solid rgb(165, 165, 165);
+    background:rgb(255, 255, 255);
+}
+
+canvas{
+    background-color: white;
+}
+
+nav.stamp img{
+    width: 80px;
+}
+
+image{
+    width: 80px;
+}

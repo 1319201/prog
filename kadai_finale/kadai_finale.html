@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/sample.css">
+    <title>canvas_base.html</title>
+</head>
+
+<body>
+        <h1>Canvas</h1>
+        <nav id="ys">
+            <img id="pen" src="pen.png" width="30" height="30">
+            <input type="color" id="col">
+            <input type="range" id="range" min="1" max="100" value="10">
+            <img id="kesi" src="kesi.png" width="30" height="30">
+            <img id="clear_btn" src="gomi.png" width="30" height="30">
+        </nav>
+        <div id="cnvs">
+            <canvas id="drawarea" width="500" height="500" style="border:1px solid blue;"></canvas>
+        </div>
+        
+        <nav id="sl">
+            <img id="save" src="save2.png" width="120" height="70">
+            <img id="load" src="load2.png" width="120" height="70">
+        </nav>
+        <div id="sg"></div>
+    </section>
+
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script>
+        let canvas_mouse_event = false; 
+        let oldX = 0; 
+        let oldY = 0; 
+        let bold_line = $("#range").val(); 
+        let color = $("#col").val(); 
+        let kesigom = $("#kesir").val(); 
+
+        const can = $("#drawarea")[0]; //キャンバス
+        const ctx = can.getContext("2d"); 
+
+        $(can).on("mousedown",function(e){
+            oldX = e.offsetX;
+            oldY = e.offsetY; 
+            canvas_mouse_event=true;
+        });
+
+        $(can).on("mousemove",function(e){
+            if(canvas_mouse_event==true){
+                const px = e.offsetX;
+                const py = e.offsetY;
+                const sk = e.target.getBoundingClientRect();
+                const x = e.clientX - sk.left;
+                const y = e.clientY - sk.top;
+                ctx.strokeStyle = $("#col").val();    
+                ctx.lineWidth = $("#range").val();
+                ctx.beginPath();
+                ctx.lineJoin= "round";
+                ctx.lineCap = "round";
+                ctx.moveTo(oldX, oldY);
+                ctx.lineTo(px, py);
+                ctx.stroke();
+                oldX = px;
+                oldY = py;
+                if((x<2||x>498)||(y<2||y>498)){
+                    canvas_mouse_event=false;
+                }  
+                }               
+            });
+
+            $("#pen").on("click",function(){
+                ctx.globalCompositeOperation = 'source-over';
+            }); 
+
+            $("#kesi").on("click",function(){
+                ctx.globalCompositeOperation = 'destination-out';
+            });
+
+
+        $(can).on("mouseup",function(){
+            canvas_mouse_event=false;
+        });
+
+        $("#clear_btn").on("click",function(){
+           ctx.beginPath();
+           ctx.clearRect(0, 0, can.width, can.height);
+        }); 
+
+        $("#save").on("click",function(){
+            const canvas = document.getElementById("drawarea");
+            const url = canvas.toDataURL();
+            const image = new Image();
+            image.src = url;
+            localStorage.setItem("save", url);
+            $("#sg").html(image);
+        }); 
+
+        $("#load").on("click",function(){
+            ctx.beginPath(); 
+            ctx.clearRect(0, 0, can.width, can.height);                      
+            const url = window.localStorage.getItem("save");
+            const image = new Image();
+            image.src = url;
+            image.onload = function(){
+            ctx.drawImage(image, 0, 0);
+            };
+        });
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
